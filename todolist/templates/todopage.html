@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todopage</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Font Awesome 5 Brands:wght@400&display=swap" />
+
+</head>
+<body>
+    <div class="signup-loginn">
+        <div class="signup-box">
+            <form method="post">
+                {% csrf_token %}
+                <div class="heading">
+                    TODOPAGE
+                </div>
+                <div class="line">
+                <div class="field">
+                    <input type="text" placeholder="ENTER YOUR TASK" class="inp">
+                </div>
+
+                <div class="field">
+                    <input type="submit" value="ADD TASK">
+                </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
