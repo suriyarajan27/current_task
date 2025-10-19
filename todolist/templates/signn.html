@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -15,48 +15,97 @@
 <body>
     <div class="signup-login">
         <div class="signup-box">
-            <form method="post">
-                {% csrf_token %}
                 <div class="heading">
                     SignUp
                 </div>
+                <form method="post">
+                    {% csrf_token %}
 
-                <div class="line"></div>
-                <div class="field">
-                    <b>Username</b>
+                    <div class="line"></div>
 
-                    <input class="inp" type="text" name="fnm" required placeholder="Enter Your Full Name">
-                </div>
+                    <div class="field">
+                        <b>Username</b>
 
-
-                <div class="field">
-                    <b>Email</b>
-
-                    <input class="inp" type="email" name="emailid" required placeholder="Enter Your Username">
-                </div>
+                        <input class="inp" type="text" name="fnm" required placeholder="Enter Your Full Name">
+                    </div>
 
 
-                <div class="field">
-                    <b>Password</b>
+                    <div class="field">
+                        <b>Email</b>
 
-                    <input  class="inp" type="password" name="pwd" required placeholder="Enter Password">
-                </div>
-                <div class="field">
-                    <input class="submit-button"type="submit" value="Signup">
-                </div>
-                <div class="line"></div>
+                        <input class="inp" type="email" name="emailid" required placeholder="Enter Your Username">
+                    </div>
 
-                <div class="field">
-                    <b style="margin-left:130px;">Already have an account?</b>
-                    <br>
-                    <a class="anc"href="/loginn">Login</a>
-                </div>
+                    <div class="field">
+                        <b>Password</b>
 
-            </form>
+                        <input  class="inp" type="password" name="pwd" required placeholder="Enter Password">
+                    </div>
+
+                    <div class="field">
+                        <input class="submit-button"type="submit" value="Signup">
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="field">
+                        <b style="margin-left:130px;">Already have an account?</b>
+                        <br>
+                        <a class="anc"href="/loginn">Login</a>
+                    </div>
+
+                </form>
 
         </div>
 
     </div>
 </body>
 
-</html>
+</html> -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" />
+        <title>SIGNUP-PAGE</title>
+   </head>
+<body>
+    <div class="wrapper">
+        <h2>SIGNN</h2><br>
+
+        {% if messages %}
+        {% for message in messages %}
+            <h3 style="color: red;">{{message}}</h3>
+        {% endfor %}
+        {% endif %}
+
+        <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="input-box">
+            <input type="text" placeholder="Create a username" required name="fnm">
+        </div>
+        <div class="input-box">
+            <input type="email" placeholder="Enter your email" required name="emailid">
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Enter your password" required name="pwd">
+        </div>
+        <div class="policy">
+        </div>
+        <div class="input-box button">
+            <input type="Submit" value="Register">
+        </div>
+        <div class="text">
+            <h3>Already have an account? <a href="loginn/"> Loginn </a></h3>
+        </div>
+        <div class="text">
+            <h3>Forgot Password?</a></h3>
+        </div>
+        </form>
+    </div>
+</body>

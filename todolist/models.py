@@ -2,8 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class TODOO(models.Model):
-    srno = models.AutoField(primary_key=True,auto_created=True)
-    title = models.CharField(max_length=25)
-    date = models.DateField(auto_now_add=True)
+class TODOTASK(models.Model):
+    task_name = models.CharField(max_length=500)
+    status = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.task_name
