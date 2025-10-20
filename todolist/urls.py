@@ -7,5 +7,6 @@ urlpatterns = [
     path('loginn/', views.loginn, name='loginn.html'),
     path('todopath/',views.todopath, name='todopath.html'),
     path('DeleteTask/<str:name>/', views.DeleteTask, name='delete'),
+    path('logout/', views.LogoutView, name='logout'),
     path('UpdateTask/<str:name>/', views.UpdateTask, name='update'),
 ]

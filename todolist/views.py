@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from todolist import models
 from todolist.models import TODOTASK
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def signn(request):
@@ -13,10 +14,14 @@ def signn(request):
         pwd=request.POST.get('pwd')
         print(fnm, emailid, pwd)
 
+        # this function is written to address the len of the password
+
         if len(pwd) < 3:
             messages.error(request, 'Password must be more than three character')
             return redirect('signn.html')
         
+        # this function is written to address an error message when the user does'nt have an sign account
+
         get_all_user_by_username = User.objects.filter(username=fnm)
         if get_all_user_by_username:
             messages.error(request, 'Entered username already exsits')
@@ -24,6 +29,8 @@ def signn(request):
 
         sign_user=User.objects.create_user(fnm, emailid, pwd)
         sign_user.save()
+
+        messages.error(request, 'user is created successfully')
         return redirect('loginn.html')
     return render(request, 'signn.html')
 
@@ -42,6 +49,7 @@ def loginn(request):
         
     return render(request, 'loginn.html')
 
+@login_required
 def todopath(request):
     if request.method=='POST':
         title=request.POST.get('title')
@@ -51,17 +59,25 @@ def todopath(request):
 
     all_todos = TODOTASK.objects.filter(user=request.user)
     context = {
+
         'todos':all_todos
+
     }
     return render(request, 'todopath.html', context)
 
+@login_required
 def DeleteTask(request, name):
     get_task = TODOTASK.objects.get(user=request.user, task_name=name)
     get_task.delete()
     return redirect('todopath.html')
 
+@login_required
 def UpdateTask(request, name):
     get_task = TODOTASK.objects.get(user=request.user, task_name=name)
     get_task.status = True
     get_task.save()
     return redirect('todopath.html')
+
+def LogoutView(request):
+    logout(request)
+    return redirect('signn.html')
