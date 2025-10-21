@@ -46,11 +46,11 @@
 
                       {% else %}
                         <td>In-Progress</td>
-
                       {% endif %}
+                      
                     <td>
-                      <a href="{% url 'delete' i.task_name %}"><button type="submit" class="btn btn-danger">Delete</button></a>
-                      <a href="{% url 'update' i.task_name %}"><button type="submit" class="btn btn-success ms-1">Finished</button></a>
+                      <a href="{% url 'delete' i.task_name %}"><button type="submit" class="btn btn-danger"> Delete </button></a>
+                      <a href="{% url 'update' i.task_name %}"><button type="submit" class="btn btn-success ms-1"> Finished </button></a>
                     </td>
                   </tr>
                 </tbody>
