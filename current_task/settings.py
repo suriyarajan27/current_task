@@ -139,18 +139,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-DEBUG = False
+DEBUG = True
 
-
-ALLOWED_HOSTS = ['127.0.0.1', 'todolist']
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-STATICFILES_DIRS = [
-
-    BASE_DIR / "static",  # 👈 for your project-level static folder
-
-]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 

@@ -29,7 +29,7 @@ def signn(request):
         
         # this function is written to address an error message when the user does'nt have an sign account
 
-        get_all_user_by_username = User.objects.filter(username=fnm, email=emailid, password=pwd)
+        get_all_user_by_username = User.objects.filter(username=fnm)
         if get_all_user_by_username:
             messages.error(request, 'Entered username already exsits')
             return redirect('signn.html')
@@ -61,7 +61,7 @@ def loginn(request):
         login_user = authenticate(username=fnm, password=pwd)
         if login_user is not None:
             login(request, login_user)
-            messages.error(request, 'Hii welcome add your task,')
+            messages.error(request, 'Hii welcome!')
             return redirect('todopath.html')
         else:
             messages.error(request, 'user does not exsit, create account')
