@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-
 def signn(request):
     if request.user.is_authenticated:
         return redirect('todopath.html')
@@ -46,10 +45,6 @@ def signn(request):
         return redirect('loginn.html')
     return render(request, 'signn.html', {})
 
-
-
-
-
 def loginn(request):
     if request.user.is_authenticated:
         return redirect('todopath.html')
@@ -68,7 +63,6 @@ def loginn(request):
             return redirect('signn.html')
         
     return render(request, 'loginn.html')
-
 
 @login_required
 def todopath(request):
@@ -91,19 +85,12 @@ def DeleteTask(request, name):
     get_task.delete()
     return redirect('todopath.html')
 
-
-
-
 @login_required
 def UpdateTask(request, name):
     get_task = TODOTASK.objects.get(user=request.user, task_name=name)
     get_task.status = True
     get_task.save()
     return redirect('todopath.html')
-
-
-
-
 
 def LogoutView(request):
     logout(request)
