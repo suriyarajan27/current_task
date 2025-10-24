@@ -18,7 +18,7 @@ def signn(request):
 
         # this function is written to address the len of the password
 
-        if len(pwd) < 3:
+        if len(pwd) <3:
             messages.error(request, 'Password must be more than three character')
             return redirect('signn.html')
         
@@ -54,13 +54,13 @@ def loginn(request):
         pwd=request.POST.get('pwd')
         print(fnm, pwd)
         login_user = authenticate(username=fnm, password=pwd)
-        if login_user is not None:
-            login(request, login_user)
-            messages.error(request, 'Hii welcome!')
-            return redirect('todopath.html')
-        else:
-            messages.error(request, 'user does not exsit, create account')
+        if login_user is None:
+            messages.error(request, 'user does not exsit, create an new user')
             return redirect('signn.html')
+        else:
+            login(request, login_user)
+            messages.error(request, 'hi welcome')
+            return redirect('todopath.html')
         
     return render(request, 'loginn.html')
 

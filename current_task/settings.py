@@ -141,7 +141,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEBUG = True
 
-
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
