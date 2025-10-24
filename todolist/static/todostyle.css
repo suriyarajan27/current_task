@@ -1,21 +1,17 @@
-/* General Page Styling */
 body {
   background-color: #eee;
   font-family: "Poppins", sans-serif;
 }
 
-/*Full-screen section */
 .vh-100 {
   min-height: 100vh;
 } 
 
-/* Center container vertically */
 .container {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
-/* Card Styling */
 .card {
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -25,13 +21,11 @@ body {
   padding: 2rem;
 }
 
-/* Heading */
 h4 {
   font-weight: 600;
   color: #333;
 }
 
-/* Form input styling */
 .form-control {
   border-radius: 10px;
   padding: 0.75rem;
@@ -43,7 +37,6 @@ h4 {
   box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
 
-/* Add Task button */
 .btn-primary {
   border-radius: 10px;
   padding: 0.5rem 1.5rem;
@@ -56,7 +49,6 @@ h4 {
   background-color: #0056b3;
 }
 
-/* Logout Button */
 .btn-danger {
   border-radius: 10px;
   padding: 0.5rem 1.2rem;
@@ -69,7 +61,6 @@ h4 {
   font-weight: 500;
 }
 
-/* Position Logout Button */
 .logout-btn {
   position: fixed;
   top: 10px;
@@ -77,7 +68,6 @@ h4 {
   z-index: 1000;
 }
 
-/* Table Styling */
 .table {
   margin-top: 1.5rem;
   border-radius: 10px;
@@ -95,7 +85,6 @@ h4 {
   text-align: center;
 }
 
-/* Message styles */
 .message {
   color: green;
   text-align: left;
