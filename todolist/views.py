@@ -5,17 +5,16 @@ from todolist.models import TODOTASK
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import HttpResponse
 
 def signn(request):
     if request.user.is_authenticated:
         return redirect('todopath.html')
-    
+
+
     if request.method=="POST":
         fnm=request.POST.get('fnm')
         emailid=request.POST.get('emailid')
         pwd=request.POST.get('pwd')
-        print(fnm, emailid, pwd)
 
         # this function is written to address the len of the password
 
@@ -47,21 +46,22 @@ def signn(request):
     return render(request, 'signn.html')
 
 def loginn(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticate:
         return redirect('todopath.html')
+
 
     if request.method=="POST":
         fnm=request.POST.get('fnm')
         pwd=request.POST.get('pwd')
-        print(fnm, pwd)
+
         login_user = authenticate(username=fnm, password=pwd)
-        if login_user is None:
-            messages.error(request, 'user does not exsit, create an new user')
-            return redirect('signn.html')
-        else:
+        if login_user is not None:
             login(request, login_user)
-            messages.error(request, 'HII WELCOME')
+            messages.success(request, 'Hii Welcome')
             return redirect('todopath.html')
+        else:
+            messages.error(request, 'user does not exsit, create user account')
+            return redirect('signn.html')
         
     return render(request, 'loginn.html')
 
@@ -74,21 +74,17 @@ def todopath(request):
         todo_method.save()
 
     all_todos = TODOTASK.objects.filter(user=request.user)
-    context = {
-
-        'todos':all_todos
-    }
-    return render(request, 'todopath.html', context)
+    return render(request, 'todopath.html', {'todos': all_todos})
 
 @login_required
-def DeleteTask(request, name):
-    get_task = TODOTASK.objects.get(user=request.user, task_name=name)
+def DeleteTask(request, id):
+    get_task = TODOTASK.objects.get(user=request.user, id=id)
     get_task.delete()
     return redirect('todopath.html')
 
 @login_required
-def UpdateTask(request, name):
-    get_task = TODOTASK.objects.get(user=request.user, task_name=name)
+def UpdateTask(request, id):
+    get_task = TODOTASK.objects.get(user=request.user, id=id)
     get_task.status = True
     get_task.save()
     return redirect('todopath.html')

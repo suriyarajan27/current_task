@@ -22,9 +22,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', include('todolist.urls')),
     path('gettoken/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refreshtoken/', TokenRefreshView.as_view(), name='token_refresh'),
     path('verifytoken/', TokenVerifyView.as_view(), name='token_verify'),
+
 ]

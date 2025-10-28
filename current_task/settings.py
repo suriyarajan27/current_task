@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'todolist'
+    'todolist',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEBUG = True
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
